@@ -29,7 +29,7 @@ namespace Sycilines.DAL
         private static MySqlCommand commande;
 
 
-        public static List<Liaison> chargementLiaisonSecteur(Secteur secteur)
+        public static List<Liaison> ChargementLiaisonSecteur(Secteur secteur)
         {
             List<Liaison> listeLiaison = new List<Liaison>();
             ConnexionSql connexion = ConnexionSql.getInstance(provider, dataBase, uid, mdp);

@@ -185,3 +185,15 @@ C:\Users\galax\Desktop\Mission2-main\Sycilines.xml
 C:\Users\galax\Desktop\Mission2-main\Sycilines\obj\Debug\Sycilines.pdb
 C:\Users\galax\Desktop\Mission2-main\Sycilines.exe
 C:\Users\galax\Desktop\Mission2-main\Sycilines.pdb
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.AssemblyReference.cache
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.SuggestedBindingRedirects.cache
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.Properties.Resources.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\ScilyLinesMission2.Ajouter.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.Vue.confirmLiaison.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.Modifier.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\ScilyLinesMission2.PageAccueil.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.Vue.Supprimer.resources
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.GenerateResource.cache
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.CoreCompileInputs.cache
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.exe
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.pdb

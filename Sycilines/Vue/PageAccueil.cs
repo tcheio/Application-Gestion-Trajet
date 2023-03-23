@@ -101,8 +101,12 @@ namespace ScilyLinesMission2
             //fermeture de la connextion
             connexion.closeConnection();*/
 
-            List<Liaison> listeLiaison = new List<Liaison>;
-            listeLiaison = LiaisonDAO.chargementLiaisonSecteur(secteurBox.SelectedItem);
+            Secteur secteur = (Secteur)secteurBox.SelectedItem;
+            List <Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
+            for (int i = 0;i < listeLiaison.Count; i++)
+            {
+                liaisonBox.Items.Add(listeLiaison[i].getDepart() + "-" + listeLiaison[i].getArrivee());
+            }
         }
 
         private void ajouter_Click(object sender, EventArgs e)
