@@ -52,7 +52,7 @@ namespace ScilyLinesMission2
             return id;
         }
 
-        private void AjoutBouton_Click(object sender, EventArgs e, TextBox id)
+        private void AjoutBouton_Click(object sender, EventArgs e)
         {
             List<Port> listePort = PortDAO.chargementPort();
             string dp = listePort[listBox1.SelectedIndex].getNom();
@@ -74,8 +74,5 @@ namespace ScilyLinesMission2
                 this.Close();
             }
         }
-
-
-
     }
 }

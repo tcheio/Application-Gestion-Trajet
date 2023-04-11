@@ -27,24 +27,7 @@ namespace ScilyLinesMission2
         {
             ajouter.Hide();
             supprimer.Hide();
-            modifier.Hide(); //Pour le moments on les chache parce que y a aucune liaison a modifier ou supprimer ou ajouter
-            /*ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            MySqlCommand secteurCommande = connexion.reqExec("select id,nom from secteur"); //Requête affichant tous les secteurs
-            MySqlDataReader secteur = secteurCommande.ExecuteReader(); //Requete renvoyant plusieurs résultat
-            if (secteur.HasRows) //Condition vérifiant si la requête possèdes des résultats
-            {
-                while (secteur.Read()) //On va lire chaque ligne
-                {
-                    secteurBox.Items.Add(secteur.GetString(0) + " - " + secteur.GetString(1)); //On ajoute l'id et le nom des secteur à chaque item de la listbox
-                }
-            }
-            else
-            {
-                Console.WriteLine("No rows found."); //information de la console disant aucune ligne
-            }
-            secteur.Close();
-            connexion.closeConnection();*/
+            modifier.Hide();
             List < Secteur > listeSecteur = SecteurDAO.chargementSecteur();
 
             for (int i = 0; i < listeSecteur.Count; i++)
@@ -59,48 +42,6 @@ namespace ScilyLinesMission2
             modifier.Hide();
             ajouter.Show();
             liaisonBox.Items.Clear();
-            /*//après seclectionner le secteur le button Ajouter s'affiche
-            int indiceSecteur = secteurBox.SelectedIndex+1; //pour affiche le secteur identique à son indice
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            // Requête qui donne les ports d'arrivées des liaisons du secteur séléctionné
-            MySqlCommand liaisonCommande = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portDepart JOIN secteur S on S.id = L.idSecteur where S.id = " + indiceSecteur);
-            MySqlDataReader resultLiaison = liaisonCommande.ExecuteReader();
-            int i = 0;
-            List<string> listeDepart = new List<string>();
-            if (resultLiaison.HasRows) // Condition qui permet de lire chaque element de ligne
-            {
-                while (resultLiaison.Read())
-                {
-                    listeDepart.Add(resultLiaison.GetString(0));
-                    i += 1;
-                }
-            }
-            else
-            {
-                Console.WriteLine("No rows found.");
-            }
-            Console.WriteLine(i);
-            resultLiaison.Close();
-            MySqlCommand liaisonCommande2 = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portArrivee JOIN secteur S on S.id = L.idSecteur where S.id = " + indiceSecteur);
-            MySqlDataReader resultLiaison2 = liaisonCommande2.ExecuteReader();
-            if (resultLiaison2.HasRows) // Condition qui permet de lire chaque element de ligne
-            {
-                int j = 0;
-                while (resultLiaison2.Read() && j < i)
-                {
-                    liaisonBox.Items.Add(listeDepart[j]+"-"+resultLiaison2.GetString(0));
-                    j += 1;
-                }
-            }
-            else
-            {
-                Console.WriteLine("No rows found.");
-            }
-            resultLiaison2.Close();
-            //fermeture de la connextion
-            connexion.closeConnection();*/
-
             string secteurNom = (string)secteurBox.SelectedItem;
             Secteur secteur = SecteurDAO.recupSecteur(secteurNom);
             List <Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
@@ -132,12 +73,11 @@ namespace ScilyLinesMission2
 
         private void supprimer_Click(object sender, EventArgs e)
         {
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            MySqlCommand supprId = connexion.reqExec("select id from liaison where portArrivee=(select id from port where nom='"+ liaisonBox.SelectedItem+"')");//sélectionner la liaison avec port d'arrivée
-            int idLiaison = (int)supprId.ExecuteScalar();
-            connexion.closeConnection();
-            Supprimer suppr = new Supprimer(idLiaison);
+            string secteurNom = (string)secteurBox.SelectedItem;
+            Secteur secteur = SecteurDAO.recupSecteur(secteurNom);
+            List<Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
+            int indice = liaisonBox.SelectedIndex;
+            Supprimer suppr = new Supprimer(listeLiaison[indice]);
             suppr.ShowDialog();
         }
 

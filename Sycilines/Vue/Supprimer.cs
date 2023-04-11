@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ScilyLinesMission2;
+using Sycilines.DAL;
+using Sycilines.Modele;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,24 +16,15 @@ namespace Sycilines.Vue
 {
     public partial class Supprimer : Form
     {
-        private int idLiaison;
+        private Liaison l;
 
-        public Supprimer(int liaison)
+        public Supprimer(Liaison liaison)
         {
             InitializeComponent();
-            this.idLiaison = liaison;
+            this.l = liaison;
         }
 
-        public int suppressionLiaison()
-        {
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            //Requête effectuant la suppresion
-            MySqlCommand suppression = connexion.reqExec("Delete from liaison where id=" + this.idLiaison);
-            connexion.openConnection();
-            int count = suppression.ExecuteNonQuery();
-            connexion.closeConnection();
-            return count;
-        }
+        
 
         private void suppr_Load(object sender, EventArgs e)
         {
@@ -45,18 +38,18 @@ namespace Sycilines.Vue
 
         private void suppr_Click(object sender, EventArgs e)
         {
-            int count = this.suppressionLiaison(); //Appel à la méthode de suppression
+            int count = LiaisonDAO.suppressionLiaison(l); //Appel à la méthode de suppression
             if (count != 0)
             {
                 confirmLiaison conf = new confirmLiaison("La liaison a été supprimé.");
-                this.Close();
                 conf.ShowDialog();
+                this.Close();
             }
             else
             {
                 confirmLiaison conf = new confirmLiaison("Aucune suppréssion n'a été réalisé");
-                this.Close();
                 conf.ShowDialog();
+                this.Close();
             }
             
         }

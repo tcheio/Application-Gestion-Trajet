@@ -134,6 +134,7 @@
             this.AjoutBouton.TabIndex = 19;
             this.AjoutBouton.Text = "Ajouter";
             this.AjoutBouton.UseVisualStyleBackColor = true;
+            this.AjoutBouton.Click += new System.EventHandler(this.AjoutBouton_Click);
             // 
             // pictureBox1
             // 

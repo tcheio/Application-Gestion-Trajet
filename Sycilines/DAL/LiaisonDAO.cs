@@ -91,6 +91,7 @@ namespace Sycilines.DAL
             return listeLiaison;
         }
 
+
         public static int ajoutLiaison(Liaison l)
         {
             //Listebox méthode
@@ -108,6 +109,19 @@ namespace Sycilines.DAL
             connexion.closeConnection();
             return count;
         }
-    } 
+        public static int suppressionLiaison(Liaison l)
+        {
+            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
+            //Requête effectuant la suppresion
+            MySqlCommand suppression = connexion.reqExec("Delete from liaison where id=" + l.getId() + ";");
+            connexion.openConnection();
+            int count = suppression.ExecuteNonQuery();
+            connexion.closeConnection();
+            return count;
+        }
+
+        
+    }
+
 
 }
