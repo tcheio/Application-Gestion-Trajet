@@ -197,3 +197,8 @@ C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\S
 C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.CoreCompileInputs.cache
 C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.exe
 C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.pdb
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines\obj\Debug\Sycilines.csproj.CopyComplete
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines.exe.config
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines.xml
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines.exe
+C:\Users\galax\Documents\GitHub\Application-Gestion-Trajet\Sycilines.pdb

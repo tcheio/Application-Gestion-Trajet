@@ -35,7 +35,7 @@ namespace Sycilines.DAL
             ConnexionSql connexion = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
             connexion.openConnection();
             // Requête qui donne les ports d'arrivées des liaisons du secteur séléctionné
-            MySqlCommand liaisonCommande = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portDepart JOIN secteur S on S.id = L.idSecteur where S.id = " + secteur.getId());
+            MySqlCommand liaisonCommande = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portDepart JOIN secteur S on S.id = L.idSecteur where S.id ='"+ secteur.getId()+"';");
             MySqlDataReader resultLiaison = liaisonCommande.ExecuteReader();
             List<string> listeDepart = new List<string>();
             if (resultLiaison.HasRows) // Condition qui permet de lire chaque element de ligne
@@ -50,7 +50,8 @@ namespace Sycilines.DAL
                 Console.WriteLine("No rows found.");
             }
             resultLiaison.Close();
-            MySqlCommand liaisonCommande2 = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portArrivee JOIN secteur S on S.id = L.idSecteur where S.id = " + secteur.getId());
+
+            MySqlCommand liaisonCommande2 = connexion.reqExec("select P.nom from port P join liaison L On P.id = L.portArrivee JOIN secteur S on S.id = L.idSecteur where S.id ='"+ secteur.getId()+"';");
             MySqlDataReader resultLiaison2 = liaisonCommande2.ExecuteReader();
             List<string> listeArrivee = new List<string>();
             if (resultLiaison2.HasRows) // Condition qui permet de lire chaque element de ligne
@@ -65,15 +66,16 @@ namespace Sycilines.DAL
                 Console.WriteLine("No rows found.");
             }
             resultLiaison2.Close();
-            MySqlCommand liaisonCommande3 = connexion.reqExec("select id, duree from liaison where S.id = " + secteur.getId()) ;
-            MySqlDataReader resultLiaison3 = liaisonCommande2.ExecuteReader();
+
+            MySqlCommand liaisonCommande3 = connexion.reqExec("select id, duree from liaison where idSecteur = '"+ secteur.getId()+"';") ;
+            MySqlDataReader resultLiaison3 = liaisonCommande3.ExecuteReader();
             int i = 0;
             if (resultLiaison3.HasRows) // Condition qui permet de lire chaque element de ligne
             {
                 while (resultLiaison3.Read())
                 {
                     int id = (int)resultLiaison3.GetValue(0);
-                    string duree = (string)resultLiaison.GetValue(1);
+                    string duree = (string)resultLiaison3.GetValue(1);
                     
                     Liaison liaison = new Liaison(id, duree, listeDepart[i], listeArrivee[i], secteur.getId());
                     

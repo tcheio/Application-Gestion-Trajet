@@ -55,8 +55,6 @@ namespace ScilyLinesMission2
 
         private void secteurBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            supprimer.Hide();
-            modifier.Hide();
             ajouter.Show();
             liaisonBox.Items.Clear();
             /*//après seclectionner le secteur le button Ajouter s'affiche
@@ -101,7 +99,8 @@ namespace ScilyLinesMission2
             //fermeture de la connextion
             connexion.closeConnection();*/
 
-            Secteur secteur = (Secteur)secteurBox.SelectedItem;
+            string secteurNom = (string)secteurBox.SelectedItem;
+            Secteur secteur = SecteurDAO.recupSecteur(secteurNom);
             List <Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
             for (int i = 0;i < listeLiaison.Count; i++)
             {

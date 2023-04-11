@@ -53,5 +53,22 @@ namespace Sycilines.DAL
 
             return listeSecteur;
         }
+
+        public static Secteur recupSecteur(string secteurNom)
+        {
+            ConnexionSql connexion = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+            connexion.openConnection();
+            MySqlCommand secteurCommande = connexion.reqExec("select id,nom from secteur where nom='"+secteurNom+"';");
+            MySqlDataReader result = secteurCommande.ExecuteReader();
+
+            result.Read();
+            int id = (int)result.GetValue(0);
+            string nom = (string)result.GetValue(1);
+            result.Close();
+            Secteur s = new Secteur(id, nom);
+            connexion.closeConnection();
+            return s;
+
+        }
     }
 }
