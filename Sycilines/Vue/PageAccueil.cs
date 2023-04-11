@@ -83,12 +83,11 @@ namespace ScilyLinesMission2
 
         private void modifier_Click(object sender, EventArgs e)
         {
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            MySqlCommand idLiaison = connexion.reqExec("select id from liaison where portArrivee = (select id from port where nom='" + liaisonBox.SelectedItem + "')");//sélectionner la liaison avec port d'arrivée
-            int resultLiaison = (int) idLiaison.ExecuteScalar();
-            connexion.closeConnection();
-            Modifier moddif = new Modifier(resultLiaison);
+            string secteurNom = (string)secteurBox.SelectedItem;
+            Secteur secteur = SecteurDAO.recupSecteur(secteurNom);
+            List<Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
+            int indice = liaisonBox.SelectedIndex;
+            Modifier moddif = new Modifier(listeLiaison[indice]);
             moddif.ShowDialog();
             this.Close();
         }

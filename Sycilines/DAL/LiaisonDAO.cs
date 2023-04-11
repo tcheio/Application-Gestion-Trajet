@@ -120,6 +120,15 @@ namespace Sycilines.DAL
             return count;
         }
 
+        public static int modifierLiaison(Liaison l, string duree)
+        {
+            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
+            connexion.openConnection();
+            MySqlCommand updateLiaison = connexion.reqExec("UPDATE liaison SET duree='" + duree + "' WHERE id =" + l.getId()+";");
+            int count = updateLiaison.ExecuteNonQuery();
+            connexion.closeConnection();
+            return count;
+        }
         
     }
 
