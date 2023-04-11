@@ -198,7 +198,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Name = "Ajouter";
-            this.Text = "Ajouter";
+            this.Text = "W";
             this.Load += new System.EventHandler(this.Ajouter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -103,8 +103,8 @@ namespace Sycilines.DAL
             int pDep = (int)chercheDep.ExecuteScalar();
             int pArr = (int)chercheArr.ExecuteScalar();
             //Requête effectuant l'insertion
-            MySqlCommand insertion = connexion.reqExec("insert into liaison(id,duree,portDepart,portArrivee,idSecteur) values" +
-                "("+l.getId()+","+ l.getDuree() + "," + pDep + "," + pArr + "," + l.getIdSecteur() + ");");
+            MySqlCommand insertion = connexion.reqExec("insert into liaison values" +
+                "("+l.getId()+",'"+ l.getDuree() + "'," + pDep + "," + pArr + "," + l.getIdSecteur() + ");");
             int count = insertion.ExecuteNonQuery(); //On garde en mémoire le nombre de ligne crée
             connexion.closeConnection();
             return count;

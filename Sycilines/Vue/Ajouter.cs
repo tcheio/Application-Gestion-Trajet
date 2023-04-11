@@ -58,7 +58,8 @@ namespace ScilyLinesMission2
             string dp = listePort[listBox1.SelectedIndex].getNom();
             string arr = listePort[listBox2.SelectedIndex].getNom();
             int ind = Convert.ToInt32(id.Text);
-            Liaison liaison = new Liaison(ind, duree.Text, dp, arr, secteur.getId()); ;
+            string dur = duree.Text;
+            Liaison liaison = new Liaison(ind, dur, dp, arr, secteur.getId()); ;
             int count = LiaisonDAO.ajoutLiaison(liaison);
 
             if (count != 0) //Si le count est différent de 0 alors une ou plusieurs insertion a été effectué
