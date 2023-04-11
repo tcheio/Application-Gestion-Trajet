@@ -89,6 +89,11 @@ namespace Sycilines.DAL
 
             return listeLiaison;
         }
+
+        public static string ajoutLiaison()
+        {
+
+        }
     } 
 
 }

@@ -55,6 +55,8 @@ namespace ScilyLinesMission2
 
         private void secteurBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            supprimer.Hide();
+            modifier.Hide();
             ajouter.Show();
             liaisonBox.Items.Clear();
             /*//après seclectionner le secteur le button Ajouter s'affiche
@@ -110,14 +112,14 @@ namespace ScilyLinesMission2
 
         private void ajouter_Click(object sender, EventArgs e)
         {
-            int indiceSecteur = secteurBox.SelectedIndex + 1;
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            MySqlCommand secteurCommande = connexion.reqExec("select nom from secteur where id=" + indiceSecteur); // Requête qui donne le nom de secteur selectionné
-            Ajouter ajout = new Ajouter((string)secteurCommande.ExecuteScalar(), indiceSecteur);
-            connexion.closeConnection();
-            ajout.ShowDialog();
+
+            string secteurNom = (string)secteurBox.SelectedItem;
+            Secteur secteur = SecteurDAO.recupSecteur(secteurNom);
+            List<Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
+            int indiceLiaison = liaisonBox.SelectedIndex;
+            Ajouter ajout = new Ajouter(secteur);
             this.Close();
+            ajout.ShowDialog();
         }
 
         private void liaisonBox_SelectedIndexChanged(object sender, EventArgs e)

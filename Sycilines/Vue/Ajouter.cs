@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Sycilines;
+using Sycilines.DAL;
+using Sycilines.Modele;
 using Sycilines.Vue;
 using System;
 using System.Collections.Generic;
@@ -15,8 +17,7 @@ namespace ScilyLinesMission2
 {
     public partial class Ajouter : Form
     {
-        private string nomSecteur;
-        private int indiceSecteur;
+        private Secteur secteur;
         private int ind;
 
         public Ajouter()
@@ -24,36 +25,25 @@ namespace ScilyLinesMission2
             InitializeComponent();
         }
 
-        public Ajouter(string nomSecteur,int indice)
+
+        public Ajouter(Secteur secteur)
         {
             InitializeComponent();
-            this.nomSecteur = nomSecteur;
-            this.indiceSecteur = indice;
+            this.secteur = secteur;
 
         }
 
 
+
         private void Ajouter_Load(object sender, EventArgs e)
         {
-            sousTitre.Text += nomSecteur;
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            MySqlCommand portCommande = connexion.reqExec("select nom from Port"); //Requête affichant tous les secteurs
-            MySqlDataReader port = portCommande.ExecuteReader(); //Requete renvoyant plusieurs résultat
-            if (port.HasRows) //Condition vérifiant si la requête possèdes des résultats
+            sousTitre.Text += secteur.getNom();
+            List<Port> listePort = PortDAO.chargementPort();
+            for (int i = 0; i < listePort.Count; i++)
             {
-                while (port.Read()) //On va lire chaque ligne
-                {
-                    listBox1.Items.Add(port.GetString(0)); //On ajoute l'id et le nom des secteur à chaque item de la listbox
-                    listBox2.Items.Add(port.GetString(0)); //On ajoute l'id et le nom des secteur à chaque item de la listbox
-                }
+                listBox1.Items.Add(listePort[i].getNom());
+                listBox2.Items.Add(listePort[i].getNom());
             }
-            else
-            {
-                Console.WriteLine("No rows found."); //information de la console disant aucune ligne
-            }
-            port.Close();
-            connexion.closeConnection();
 
         }
 

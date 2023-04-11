@@ -93,8 +93,10 @@
   <ItemGroup>
     <Compile Include="DAL\ConnexionSQL.cs" />
     <Compile Include="DAL\LiaisonDAO.cs" />
+    <Compile Include="DAL\PortDAO.cs" />
     <Compile Include="DAL\SecteurDAO.cs" />
     <Compile Include="Modele\Liaison.cs" />
+    <Compile Include="Modele\Port.cs" />
     <Compile Include="Modele\Secteur.cs" />
     <Compile Include="Vue\confirmLiaison.cs">
       <SubType>Form</SubType>

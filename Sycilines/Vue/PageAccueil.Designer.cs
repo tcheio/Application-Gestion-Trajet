@@ -149,12 +149,12 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Red;
             this.label5.Font = new System.Drawing.Font("Impact", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(217, 9);
+            this.label5.Location = new System.Drawing.Point(226, 9);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label5.Size = new System.Drawing.Size(378, 65);
+            this.label5.Size = new System.Drawing.Size(408, 65);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Sycilines Admin";
+            this.label5.Text = "Sicilylines Admin";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // affichage
