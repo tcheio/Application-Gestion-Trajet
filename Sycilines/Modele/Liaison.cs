@@ -23,6 +23,14 @@ namespace Sycilines
             this.idSecteur = idSecteur;
         }
 
+        public Liaison(string duree, string depart, string arrivee, int idSecteur)
+        {
+            this.duree = duree;
+            this.depart = depart;
+            this.arrivee = arrivee;
+            this.idSecteur = idSecteur;
+        }
+
         public void setDuree(string duree)
         {
             this.duree = duree;
@@ -56,6 +64,11 @@ namespace Sycilines
         public int getId()
         {
             return this.id;
+        }
+
+        public int getIdSecteur()
+        {
+            return this.idSecteur;
         }
 
         public override string ToString()

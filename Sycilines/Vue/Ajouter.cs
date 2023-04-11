@@ -47,39 +47,35 @@ namespace ScilyLinesMission2
 
         }
 
-        private void ajout_Click(object sender, EventArgs e)
+        private TextBox GetId()
         {
+            return id;
+        }
 
+        private void AjoutBouton_Click(object sender, EventArgs e, TextBox id)
+        {
+            List<Port> listePort = PortDAO.chargementPort();
+            string dp = listePort[listBox1.SelectedIndex].getNom();
+            string arr = listePort[listBox2.SelectedIndex].getNom();
+            int ind = Convert.ToInt32(id.Text);
+            Liaison liaison = new Liaison(ind, duree.Text, dp, arr, secteur.getId()); ;
+            int count = LiaisonDAO.ajoutLiaison(liaison);
 
-            //Listebox méthode
-            ConnexionSql connexion = ConnexionSql.getInstance("localhost", "sycilines", "connexionBDD", "f9(5HttDX0wXqA-R");
-            connexion.openConnection();
-            //Requêtes permettant de récupérer les ID des ports d'arrivée et de départ
-            MySqlCommand chercheDep = connexion.reqExec("Select id from port where nom='" + listBox1.SelectedItem + "'");
-            MySqlCommand chercheArr = connexion.reqExec("Select id from port where nom='" + listBox2.SelectedItem + "'");
-            string depart = (string)listBox1.SelectedItem;
-            string arrivee = (string)listBox2.SelectedItem;
-            int pDep = (int)chercheDep.ExecuteScalar();
-            int pArr = (int)chercheArr.ExecuteScalar();
-            //Requête effectuant l'insertion
-            MySqlCommand insertion = connexion.reqExec("insert into liaison(id,duree,portDepart,portArrivee,idSecteur) values (" + Convert.ToInt32(indice.Text) + ",'" + duree.Text + "'," + pDep + "," + pArr + "," + this.indiceSecteur + ")");
-            int count = insertion.ExecuteNonQuery(); //On garde en mémoire le nombre de ligne crée
-            connexion.closeConnection();
-            //ind = indice.Text;
             if (count != 0) //Si le count est différent de 0 alors une ou plusieurs insertion a été effectué
             {
-                Liaison nouvelleLiaison = new Liaison(ind, duree.Text,depart,arrivee, this.indiceSecteur);
-                confirmLiaison conf = new confirmLiaison("Votre enregistrement a été pris en compte", nouvelleLiaison);
-                this.Close();
+                confirmLiaison conf = new confirmLiaison("Votre enregistrement a été pris en compte", liaison);
                 conf.ShowDialog();
+                this.Close();
             }
             else //Dans le cas contraire aucun n'a été faites
             {
                 confirmLiaison conf = new confirmLiaison("Votre enregitrement n'a pas abouti");
-                this.Close();
                 conf.ShowDialog();
+                this.Close();
             }
         }
+
+
 
     }
 }

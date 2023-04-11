@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sycilines.DAL
 {
@@ -90,9 +91,22 @@ namespace Sycilines.DAL
             return listeLiaison;
         }
 
-        public static string ajoutLiaison()
+        public static int ajoutLiaison(Liaison l)
         {
-
+            //Listebox méthode
+            ConnexionSql connexion = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+            connexion.openConnection();
+            //Requêtes permettant de récupérer les ID des ports d'arrivée et de départ
+            MySqlCommand chercheDep = connexion.reqExec("Select id from port where nom='" + l.getDepart() + "'");
+            MySqlCommand chercheArr = connexion.reqExec("Select id from port where nom='" + l.getArrivee() + "'");
+            int pDep = (int)chercheDep.ExecuteScalar();
+            int pArr = (int)chercheArr.ExecuteScalar();
+            //Requête effectuant l'insertion
+            MySqlCommand insertion = connexion.reqExec("insert into liaison(id,duree,portDepart,portArrivee,idSecteur) values" +
+                "("+l.getId()+","+ l.getDuree() + "," + pDep + "," + pArr + "," + l.getIdSecteur() + ");");
+            int count = insertion.ExecuteNonQuery(); //On garde en mémoire le nombre de ligne crée
+            connexion.closeConnection();
+            return count;
         }
     } 
 

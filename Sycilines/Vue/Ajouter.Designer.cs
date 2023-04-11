@@ -37,9 +37,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.ajout = new System.Windows.Forms.Button();
+            this.AjoutBouton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.indice = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -126,15 +126,14 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Le port\r\nd\'arrivée\r\n";
             // 
-            // ajout
+            // AjoutBouton
             // 
-            this.ajout.Location = new System.Drawing.Point(340, 318);
-            this.ajout.Name = "ajout";
-            this.ajout.Size = new System.Drawing.Size(75, 23);
-            this.ajout.TabIndex = 19;
-            this.ajout.Text = "Ajouter";
-            this.ajout.UseVisualStyleBackColor = true;
-            this.ajout.Click += new System.EventHandler(this.ajout_Click);
+            this.AjoutBouton.Location = new System.Drawing.Point(340, 318);
+            this.AjoutBouton.Name = "AjoutBouton";
+            this.AjoutBouton.Size = new System.Drawing.Size(75, 23);
+            this.AjoutBouton.TabIndex = 19;
+            this.AjoutBouton.Text = "Ajouter";
+            this.AjoutBouton.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -146,12 +145,12 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // indice
+            // id
             // 
-            this.indice.Location = new System.Drawing.Point(365, 125);
-            this.indice.Name = "indice";
-            this.indice.Size = new System.Drawing.Size(100, 20);
-            this.indice.TabIndex = 21;
+            this.id.Location = new System.Drawing.Point(365, 125);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(100, 20);
+            this.id.TabIndex = 21;
             // 
             // label3
             // 
@@ -186,9 +185,9 @@
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.indice);
+            this.Controls.Add(this.id);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.ajout);
+            this.Controls.Add(this.AjoutBouton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -216,9 +215,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button ajout;
+        private System.Windows.Forms.Button AjoutBouton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox indice;
+        private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;

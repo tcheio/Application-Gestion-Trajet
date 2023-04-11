@@ -118,8 +118,8 @@ namespace ScilyLinesMission2
             List<Liaison> listeLiaison = LiaisonDAO.ChargementLiaisonSecteur(secteur);
             int indiceLiaison = liaisonBox.SelectedIndex;
             Ajouter ajout = new Ajouter(secteur);
-            this.Close();
             ajout.ShowDialog();
+            this.Close();
         }
 
         private void liaisonBox_SelectedIndexChanged(object sender, EventArgs e)
